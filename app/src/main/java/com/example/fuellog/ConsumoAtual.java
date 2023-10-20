@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.fuellog.databinding.FragmentSecondBinding;
 
-public class SecondFragment extends Fragment {
+public class ConsumoAtual extends Fragment {
 
     private FragmentSecondBinding binding;
 
@@ -32,8 +32,8 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                NavHostFragment.findNavController(ConsumoAtual.this)
+                        .navigate(R.id.action_ConsumoAtual_to_Menu);
             }
         });
     }

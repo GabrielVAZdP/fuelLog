@@ -3,26 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/Menu">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/Menu"
         android:name="com.example.fuellog.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/username"
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_Menu_to_RegistrarAbastecimento"
+            app:destination="@id/RegistrarAbastecimento" />
+        <action
+            android:id="@+id/action_Menu_to_ConsumoAtual"
+            app:destination="@id/ConsumoAtual" />
+        <action
+            android:id="@+id/action_Menu_to_ProxAbastecimento"
+            app:destination="@id/ProxAbastecimento" />
+        <action
+            android:id="@+id/action_Menu_to_Historico"
+            app:destination="@id/Historico" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.fuellog.SecondFragment"
-        android:label="@string/second_fragment_label"
+        android:id="@+id/RegistrarAbastecimento"
+        android:name="com.example.fuellog.RegistrarAbastecimento"
+        android:label="@string/registrar_abastecimento"
         tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_RegistrarAbastecimento_to_Menu"
+            app:destination="@id/Menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/ConsumoAtual"
+        android:name="com.example.fuellog.ConsumoAtual"
+        android:label="@string/consumo_atual"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_ConsumoAtual_to_Menu"
+            app:destination="@id/Menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/ProxAbastecimento"
+        android:name="com.example.fuellog.ProxAbastecimento"
+        android:label="@string/proximo_abastecimento"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_ProxAbastecimento_to_Menu"
+            app:destination="@id/Menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/Historico"
+        android:name="com.example.fuellog.Historico"
+        android:label="@string/historico"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_Historico_to_Menu"
+            app:destination="@id/Menu" />
     </fragment>
 </navigation>
