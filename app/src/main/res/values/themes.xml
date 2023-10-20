@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FuelLog" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/amarelo_principal</item>
+        <item name="colorPrimaryVariant">#8F7004</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/azul_principal</item>
+        <item name="colorSecondaryVariant">#03445C</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/azul_principal</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.FuelLog.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FuelLog.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.FuelLog.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
