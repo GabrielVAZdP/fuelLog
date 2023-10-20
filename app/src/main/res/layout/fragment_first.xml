@@ -31,7 +31,7 @@
             app:layout_constraintVertical_bias="0.1" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/button_history"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:background="@drawable/historico"
@@ -39,12 +39,11 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
+            app:layout_constraintTop_toBottomOf="@+id/button_next" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button_pumb"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginTop="65dp"
@@ -56,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/button_next"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="50dp"
@@ -64,12 +63,11 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button_calculator"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginEnd="10dp"
@@ -79,7 +77,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/button_pumb" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -90,7 +88,7 @@
             app:layout_constraintGuide_begin="512dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_pumb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -99,44 +97,43 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/button_pumb" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Prox. Abastecimento"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_pumb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_calculator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
             android:text="Consumo Atual"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
+            app:layout_constraintTop_toBottomOf="@+id/button_calculator" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Consumo Atual"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_calculator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/textView2" />
+            app:layout_constraintTop_toTopOf="@+id/textView_calculator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
