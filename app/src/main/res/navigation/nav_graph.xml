@@ -9,7 +9,7 @@
         android:id="@+id/Menu"
         android:name="com.example.fuellog.FirstFragment"
         android:label="@string/username"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_menu">
 
         <action
             android:id="@+id/action_Menu_to_RegistrarAbastecimento"
@@ -28,7 +28,7 @@
         android:id="@+id/RegistrarAbastecimento"
         android:name="com.example.fuellog.RegistrarAbastecimento"
         android:label="@string/registrar_abastecimento"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_abastecimento">
 
         <action
             android:id="@+id/action_RegistrarAbastecimento_to_Menu"
@@ -38,7 +38,7 @@
         android:id="@+id/ConsumoAtual"
         android:name="com.example.fuellog.ConsumoAtual"
         android:label="@string/consumo_atual"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_abastecimento">
 
         <action
             android:id="@+id/action_ConsumoAtual_to_Menu"
@@ -48,7 +48,7 @@
         android:id="@+id/ProxAbastecimento"
         android:name="com.example.fuellog.ProxAbastecimento"
         android:label="@string/proximo_abastecimento"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_prox_abastecimento">
 
         <action
             android:id="@+id/action_ProxAbastecimento_to_Menu"
@@ -58,7 +58,7 @@
         android:id="@+id/Historico"
         android:name="com.example.fuellog.Historico"
         android:label="@string/historico"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_abastecimento">
 
         <action
             android:id="@+id/action_Historico_to_Menu"

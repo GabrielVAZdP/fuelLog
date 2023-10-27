@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.fuellog.databinding.FragmentSecondBinding;
+import com.example.fuellog.databinding.FragmentAbastecimentoBinding;
 
 public class ConsumoAtual extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentAbastecimentoBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class ConsumoAtual extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentAbastecimentoBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,13 +29,6 @@ public class ConsumoAtual extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ConsumoAtual.this)
-                        .navigate(R.id.action_ConsumoAtual_to_Menu);
-            }
-        });
     }
 
     @Override

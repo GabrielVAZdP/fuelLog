@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.fuellog.databinding.FragmentSecondBinding;
+import com.example.fuellog.databinding.FragmentProxAbastecimentoBinding;
+
 
 public class ProxAbastecimento extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentProxAbastecimentoBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +22,7 @@ public class ProxAbastecimento extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentProxAbastecimentoBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,13 +30,13 @@ public class ProxAbastecimento extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ProxAbastecimento.this)
-                        .navigate(R.id.action_ProxAbastecimento_to_Menu);
-            }
-        });
+//        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(ProxAbastecimento.this)
+//                        .navigate(R.id.action_ProxAbastecimento_to_Menu);
+//            }
+//        });
     }
 
     @Override
