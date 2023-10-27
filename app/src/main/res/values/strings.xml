@@ -5,6 +5,7 @@
     <string name="username">Gabriel</string>
     <string name="registrar_abastecimento">Registrar Abastecimento</string>
     <string name="proximo_abastecimento">Prox. Abastecimento</string>
+    <string name="proximo_abastecimento_completo">Próximo Abastecimento</string>
     <string name="consumo_atual">Consumo Atual</string>
     <string name="historico">Histórico</string>
     <string name="next">Next</string>

@@ -38,7 +38,7 @@
         android:id="@+id/ConsumoAtual"
         android:name="com.example.fuellog.ConsumoAtual"
         android:label="@string/consumo_atual"
-        tools:layout="@layout/fragment_abastecimento">
+        tools:layout="@layout/fragment_consumo_atual">
 
         <action
             android:id="@+id/action_ConsumoAtual_to_Menu"

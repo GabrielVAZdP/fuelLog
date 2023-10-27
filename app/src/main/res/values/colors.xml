@@ -9,4 +9,21 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azul_principal">#FF021D3D</color>
     <color name="amarelo_principal">#f6be00</color>
+    <!-- Vermelho -->
+    <color name="red">#FF0000</color>
+    <color name="darkRed">#8B0000</color>
+    <color name="lightRed">#FF6347</color>
+    <color name="customRed">#FF5733</color>
+
+    <!-- Verde -->
+    <color name="green">#00FF00</color>
+    <color name="darkGreen">#006400</color>
+    <color name="lightGreen">#90EE90</color>
+    <color name="customGreen">#00FF7F</color>
+
+    <color name="yellow">#FFFF00</color> <!-- Amarelo -->
+    <color name="darkYellow">#FFD700</color> <!-- Amarelo escuro -->
+    <color name="lightYellow">#FFFFE0</color> <!-- Amarelo claro -->
+    <color name="customYellow">#FFC300</color> <!-- Amarelo personalizado -->
+
 </resources>
