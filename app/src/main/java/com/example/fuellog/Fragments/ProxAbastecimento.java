@@ -1,4 +1,4 @@
-package com.example.fuellog;
+package com.example.fuellog.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

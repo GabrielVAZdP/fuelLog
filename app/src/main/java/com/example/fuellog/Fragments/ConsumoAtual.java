@@ -1,4 +1,4 @@
-package com.example.fuellog;
+package com.example.fuellog.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.fuellog.databinding.FragmentAbastecimentoBinding;
+import com.example.fuellog.databinding.FragmentConsumoAtualBinding;
 
-public class Historico extends Fragment {
+public class ConsumoAtual extends Fragment {
 
-    private FragmentAbastecimentoBinding binding;
+    private FragmentConsumoAtualBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +20,7 @@ public class Historico extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentAbastecimentoBinding.inflate(inflater, container, false);
+        binding = FragmentConsumoAtualBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }

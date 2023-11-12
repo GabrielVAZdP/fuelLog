@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/Menu"
-        android:name="com.example.fuellog.FirstFragment"
+        android:name="com.example.fuellog.Fragments.FirstFragment"
         android:label="@string/username"
         tools:layout="@layout/fragment_menu">
 
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/RegistrarAbastecimento"
-        android:name="com.example.fuellog.RegistrarAbastecimento"
+        android:name="com.example.fuellog.Fragments.RegistrarAbastecimento"
         android:label="@string/registrar_abastecimento"
         tools:layout="@layout/fragment_abastecimento">
 
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/ConsumoAtual"
-        android:name="com.example.fuellog.ConsumoAtual"
+        android:name="com.example.fuellog.Fragments.ConsumoAtual"
         android:label="@string/consumo_atual"
         tools:layout="@layout/fragment_consumo_atual">
 
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/ProxAbastecimento"
-        android:name="com.example.fuellog.ProxAbastecimento"
+        android:name="com.example.fuellog.Fragments.ProxAbastecimento"
         android:label="@string/proximo_abastecimento"
         tools:layout="@layout/fragment_prox_abastecimento">
 
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/Historico"
-        android:name="com.example.fuellog.Historico"
+        android:name="com.example.fuellog.Fragments.Historico"
         android:label="@string/historico"
         tools:layout="@layout/fragment_abastecimento">
 
