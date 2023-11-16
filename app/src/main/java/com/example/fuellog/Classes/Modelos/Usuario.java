@@ -1,4 +1,4 @@
-package com.example.fuellog.Classes;
+package com.example.fuellog.Classes.Modelos;
 
 public class Usuario {
 
@@ -11,6 +11,15 @@ public class Usuario {
     private String email;
     private String telefone;
     private int senha;
+
+    public Usuario() {
+
+    }
+
+    public Usuario(String nome, int senha) {
+        this.nome = nome;
+        this.senha = senha;
+    }
 
     public int getId() {
         return id;

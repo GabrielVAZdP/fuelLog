@@ -4,11 +4,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 
 import com.example.fuellog.Classes.DatabaseManager;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -40,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseManager dbManager = new DatabaseManager(this);
         dbManager.open();
-        insertUsuario(dbManager);
-        lerUsuario(dbManager);
+        //insertUsuario(dbManager);
+        //lerUsuario(dbManager);
+        dbManager.deleteData("Gabriel");
         dbManager.close();
 
     }

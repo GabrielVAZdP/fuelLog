@@ -1,4 +1,4 @@
-package com.example.fuellog.Classes;
+package com.example.fuellog.Classes.Modelos;
 
 public class Veiculo {
 
@@ -10,6 +10,20 @@ public class Veiculo {
     private int tamanhoTanque;
     private int km;
     private String placa;
+
+    private Veiculo() {
+
+    }
+
+    public Veiculo(String marca, String modelo, String ano, String tipoComb, int tamanhoTanque, int km, String placa) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.tipoComb = tipoComb;
+        this.tamanhoTanque = tamanhoTanque;
+        this.km = km;
+        this.placa = placa;
+    }
 
     public int getId() {
         return id;

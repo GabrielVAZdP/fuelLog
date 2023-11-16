@@ -58,7 +58,7 @@
         android:id="@+id/Historico"
         android:name="com.example.fuellog.Fragments.Historico"
         android:label="@string/historico"
-        tools:layout="@layout/fragment_abastecimento">
+        tools:layout="@layout/fragment_historico">
 
         <action
             android:id="@+id/action_Historico_to_Menu"

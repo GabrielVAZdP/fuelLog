@@ -67,7 +67,7 @@ public class DatabaseManager {
     }
 
     // Deletar dados da tabela
-    public int deleteData(int id) {
-        return database.delete("TabelaExemplo", "id=?", new String[]{String.valueOf(id)});
+    public int deleteData(String id) {
+        return database.delete("USUARIOS", "nomeUsu=?", new String[]{String.valueOf(id)});
     }
 }

@@ -61,6 +61,7 @@
             app:layout_constraintGuide_percent="0.9" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="816dp"
             android:layout_height="611dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
