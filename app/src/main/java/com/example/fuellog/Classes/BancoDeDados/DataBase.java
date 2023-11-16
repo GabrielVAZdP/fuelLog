@@ -1,4 +1,4 @@
-package com.example.fuellog.Classes;
+package com.example.fuellog.Classes.BancoDeDados;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

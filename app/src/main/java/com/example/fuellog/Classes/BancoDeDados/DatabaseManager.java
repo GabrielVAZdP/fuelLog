@@ -1,12 +1,17 @@
-package com.example.fuellog.Classes;
+package com.example.fuellog.Classes.BancoDeDados;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 
-import java.util.Date;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 public class DatabaseManager {
 
@@ -69,5 +74,23 @@ public class DatabaseManager {
     // Deletar dados da tabela
     public int deleteData(String id) {
         return database.delete("USUARIOS", "nomeUsu=?", new String[]{String.valueOf(id)});
+    }
+
+    public void exportarBancoDeDados(Context context) {
+        try {
+            File currentDB = context.getDatabasePath("SeuBancoDeDados.db");
+            File backupDB = new File(Environment.getExternalStorageDirectory(), "BackupBancoDeDados");
+
+            if (currentDB.exists()) {
+                FileChannel src = new FileInputStream(currentDB).getChannel();
+                FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                dst.transferFrom(src, 0, src.size());
+                src.close();
+                dst.close();
+                // Notifique o usuário sobre o local do backup
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

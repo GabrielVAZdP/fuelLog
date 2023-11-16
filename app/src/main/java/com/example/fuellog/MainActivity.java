@@ -3,7 +3,7 @@ package com.example.fuellog;
 import android.database.Cursor;
 import android.os.Bundle;
 
-import com.example.fuellog.Classes.DatabaseManager;
+import com.example.fuellog.Classes.BancoDeDados.DatabaseManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         dbManager.open();
         //insertUsuario(dbManager);
         //lerUsuario(dbManager);
+        dbManager.exportarBancoDeDados(this);
         dbManager.deleteData("Gabriel");
         dbManager.close();
 
