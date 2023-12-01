@@ -49,7 +49,7 @@ public class DataBase extends SQLiteOpenHelper {
             "CREATE TABLE IF NOT EXISTS ABASTECIMENTO (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "idUsuario INTEGER, idVeiculo INTEGER, dataAbas DATE, " +
-                    "kmAtualAbas INTEGER, valorAbas REAL, qtdAbas REAL," +
+                    "kmAtualAbas INTEGER, valorAbas REAL, qtdAbas INTEGER," +
                     "tqCheioAbas INTEGER, tipoCombAbas TEXT, prctAbas INTEGER)";
 
     private static final String SQL_CREATE_TABLE_CONSUMO =

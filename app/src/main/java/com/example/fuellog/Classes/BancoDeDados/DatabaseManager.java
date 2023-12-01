@@ -76,6 +76,12 @@ public class DatabaseManager {
         return database.delete("USUARIOS", "nomeUsu=?", new String[]{String.valueOf(id)});
     }
 
+    // Select dos dados para cálculo de consumo
+    public Cursor getDataConsumo() {
+        String[] columns = {"kmAtualAbas", "qtdAbas", "tqCheioAbas", "prctAbas"};
+        return database.query("ABASTECIMENTO", columns, null, null, null, null, "data DESC", "2");
+    }
+
     public void exportarBancoDeDados(Context context) {
         try {
             File currentDB = context.getDatabasePath("SeuBancoDeDados.db");

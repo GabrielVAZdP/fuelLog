@@ -1,5 +1,10 @@
 package com.example.fuellog.Classes.Modelos;
 
+import android.content.Context;
+import android.database.Cursor;
+
+import com.example.fuellog.Classes.BancoDeDados.DatabaseManager;
+
 public class Consumo {
 
     private int id;
@@ -14,6 +19,8 @@ public class Consumo {
     private int kmAtualPenult;
     private int percentualAtual;
 
+    DatabaseManager dbManager;
+
     public Consumo(int idUsuario, int idVeiculo, String data, double valor, String tipoCombustivel, double quantidadeLitrosUlt, double quantidadeLitrosPenult, int kmAtualUlt, int kmAtualPenult, int percentualAtual) {
         this.idUsuario = idUsuario;
         this.idVeiculo = idVeiculo;
@@ -25,6 +32,11 @@ public class Consumo {
         this.kmAtualUlt = kmAtualUlt;
         this.kmAtualPenult = kmAtualPenult;
         this.percentualAtual = percentualAtual;
+    }
+
+    public Consumo(Context context) {
+        dbManager = new DatabaseManager(context);
+
     }
 
     public int getId() {
@@ -114,4 +126,60 @@ public class Consumo {
     public void setPercentualAtual(int percentualAtual) {
         this.percentualAtual = percentualAtual;
     }
+
+    public double calcularConsumo() {
+        dbManager.open();
+
+        double consumo = 0;
+
+        int kmAnterior = 0;
+        int qtdAbasAnterior = 0;
+        int tqCheioAbasAnterior = 0;
+        int prctAbasAnterior = 0;
+        int kmAtual = 0;
+        int qtdAbasAtual = 0;
+        int tqCheioAbasAtual = 0;
+        int prctAbasAtual = 0;
+        int tamTanque = 0;
+
+        tamTanque = 40; //dbManager.getTamTanque();
+
+        Cursor cursor = dbManager.getDataConsumo();
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+
+                if (cursor.isFirst()) {
+                   kmAtual = cursor.getInt(cursor.getColumnIndex("kmAtualAbas"));
+                   qtdAbasAtual = cursor.getInt(cursor.getColumnIndex("qtdAbas"));
+                   tqCheioAbasAtual = cursor.getInt(cursor.getColumnIndex("tqCheioAbas"));
+                   prctAbasAtual = cursor.getInt(cursor.getColumnIndex("prctAbas"));
+
+                } else if (cursor.getColumnIndex("kmAtualAbas") != -1) {
+                   kmAnterior = cursor.getInt(cursor.getColumnIndex("kmAtualAbas"));
+                   qtdAbasAnterior = cursor.getInt(cursor.getColumnIndex("qtdAbas"));
+                   tqCheioAbasAnterior = cursor.getInt(cursor.getColumnIndex("tqCheioAbas"));
+                   prctAbasAnterior = cursor.getInt(cursor.getColumnIndex("prctAbas"));
+
+                }
+
+            } while (cursor.moveToNext());
+
+            cursor.close();
+            if (tqCheioAbasAnterior == 1 && tqCheioAbasAtual == 1) {
+                return consumo = ((kmAtual - kmAnterior) / (tamTanque - qtdAbasAtual));
+
+            } else if (prctAbasAtual != 0 && prctAbasAnterior != 0) {
+                return consumo = ((kmAtual - kmAnterior)/ ((tamTanque*prctAbasAtual/100) - ((tamTanque*prctAbasAnterior/100))));
+
+            } else if (tqCheioAbasAnterior == 1 && prctAbasAtual != 0) {
+                return consumo;
+            }
+
+        }
+
+        return 0;
+
+    }
+
 }
