@@ -13,31 +13,29 @@ public class Consumo {
     private int idUsuario;
     private int idVeiculo;
     private String data;
-    private double valor;
     private String tipoCombustivel;
-    private double quantidadeLitrosUlt;
-    private double quantidadeLitrosPenult;
-    private int kmAtualUlt;
-    private int kmAtualPenult;
-    private int percentualAtual;
+    private String tipo;
+    private double consumoFinal;
+    private int progressBar;
 
     DatabaseAccess databaseAccess;
 
-    public Consumo(int idUsuario, int idVeiculo, String data, double valor, String tipoCombustivel, double quantidadeLitrosUlt, double quantidadeLitrosPenult, int kmAtualUlt, int kmAtualPenult, int percentualAtual) {
+    public Consumo(int idUsuario, int idVeiculo, String data, String tipoCombustivel, String tipo, double consumoFinal, int progressBar) {
         this.idUsuario = idUsuario;
         this.idVeiculo = idVeiculo;
         this.data = data;
-        this.valor = valor;
         this.tipoCombustivel = tipoCombustivel;
-        this.quantidadeLitrosUlt = quantidadeLitrosUlt;
-        this.quantidadeLitrosPenult = quantidadeLitrosPenult;
-        this.kmAtualUlt = kmAtualUlt;
-        this.kmAtualPenult = kmAtualPenult;
-        this.percentualAtual = percentualAtual;
+        this.tipo = tipo;
+        this.consumoFinal = consumoFinal;
+        this.progressBar = progressBar;
     }
 
     public Consumo(Context context) {
         databaseAccess = new DatabaseAccess(context);
+
+    }
+
+    public Consumo() {
 
     }
 
@@ -73,66 +71,44 @@ public class Consumo {
         this.data = data;
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
     public String getTipoCombustivel() {
-        return tipoCombustivel;
+        return this.tipoCombustivel;
     }
 
     public void setTipoCombustivel(String tipoCombustivel) {
         this.tipoCombustivel = tipoCombustivel;
     }
 
-    public double getQuantidadeLitrosUlt() {
-        return quantidadeLitrosUlt;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setQuantidadeLitrosUlt(double quantidadeLitrosUlt) {
-        this.quantidadeLitrosUlt = quantidadeLitrosUlt;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public double getQuantidadeLitrosPenult() {
-        return quantidadeLitrosPenult;
+    public double getConsumoFinal() {
+        return consumoFinal;
     }
 
-    public void setQuantidadeLitrosPenult(double quantidadeLitrosPenult) {
-        this.quantidadeLitrosPenult = quantidadeLitrosPenult;
+    public void setConsumoFinal(double consumoFinal) {
+        this.consumoFinal = consumoFinal;
     }
 
-    public int getKmAtualUlt() {
-        return kmAtualUlt;
+    public int getProgressBar() {
+        return this.progressBar;
     }
 
-    public void setKmAtualUlt(int kmAtualUlt) {
-        this.kmAtualUlt = kmAtualUlt;
-    }
-
-    public int getKmAtualPenult() {
-        return kmAtualPenult;
-    }
-
-    public void setKmAtualPenult(int kmAtualPenult) {
-        this.kmAtualPenult = kmAtualPenult;
-    }
-
-    public int getPercentualAtual() {
-        return percentualAtual;
-    }
-
-    public void setPercentualAtual(int percentualAtual) {
-        this.percentualAtual = percentualAtual;
+    public void setProgressBar(int progressBar) {
+        this.progressBar = progressBar;
     }
 
     public double calcularConsumo() {
-
         return databaseAccess.calcularConsumo();
+    }
 
+    public Consumo getUltimoConsumo() {
+        return databaseAccess.getUltimoConsumo();
     }
 
 }

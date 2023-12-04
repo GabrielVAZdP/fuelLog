@@ -1,8 +1,10 @@
 package com.example.fuellog;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
+import com.example.fuellog.Classes.BancoDeDados.DatabaseAccess;
 import com.example.fuellog.Classes.BancoDeDados.DatabaseManager;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        DatabaseAccess databaseAccess = new DatabaseAccess(this);
+        databaseAccess.setUpDatabase();
+
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.toolbar);
@@ -60,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            DatabaseManager dbManager = new DatabaseManager(this);
-            lerUsuario(dbManager);
+
         }
 
         return super.onOptionsItemSelected(item);

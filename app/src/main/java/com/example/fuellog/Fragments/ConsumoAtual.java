@@ -1,9 +1,11 @@
 package com.example.fuellog.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,8 @@ import com.example.fuellog.databinding.FragmentConsumoAtualBinding;
 public class ConsumoAtual extends Fragment {
 
     private FragmentConsumoAtualBinding binding;
-    double consumoAtual;
+    Consumo consumo;
+    double consumoFinal;
 
     @Override
     public View onCreateView(
@@ -24,8 +27,8 @@ public class ConsumoAtual extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        Consumo consumo = new Consumo(getContext());
-        consumoAtual = consumo.calcularConsumo();
+        consumo = new Consumo(getContext());
+        consumo = consumo.getUltimoConsumo();
 
         binding = FragmentConsumoAtualBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -36,7 +39,16 @@ public class ConsumoAtual extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView textoConsumo = view.findViewById(R.id.textConsumo);
-        textoConsumo.setText("Consumo Atual: " + consumoAtual + " Km/L");
+        TextView textoCombustivel = view.findViewById(R.id.tipoCombustivelResutado);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+
+        textoConsumo.setText("Consumo Atual: " + consumo.getConsumoFinal() + " Km/L");
+        progressBar.setProgress(consumo.getProgressBar());
+
+        if (consumo.getTipoCombustivel().equals("G")) {
+            textoCombustivel.setText("Gasolina");
+        }
+
 
 
     }

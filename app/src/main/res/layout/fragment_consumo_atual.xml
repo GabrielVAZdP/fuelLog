@@ -13,14 +13,98 @@
         android:fadingEdge="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tipoCombustivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Tipo de combustível:"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textConsumo" />
+
+        <TextView
+            android:id="@+id/tipoCombustivelResutado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gasolina"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/tipoCombustivel" />
+
+        <TextView
+            android:id="@+id/tipoCalculoResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exato"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/tipoCalculo" />
+
+        <TextView
+            android:id="@+id/nomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gabriel"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/usuario" />
+
+        <TextView
+            android:id="@+id/dataCalculoResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03/12/2023"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/dataCalculo" />
+
+        <TextView
+            android:id="@+id/dataCalculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Data do cálculo:"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tipoCombustivel" />
+
+        <TextView
+            android:id="@+id/usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Usuário:"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tipoCalculo" />
+
+        <TextView
+            android:id="@+id/tipoCalculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Tipo de cálculo:"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/dataCalculo" />
+
+        <TextView
+            android:id="@+id/titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/consumo_atual"
@@ -33,94 +117,48 @@
 
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/ruim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gasolina"
+            android:text="Ruim"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/bom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bom"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/medio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Médio"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/consumo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Consumo"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ruim"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ruim"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bom"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bom"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Médio"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Médio"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Etanol"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar2"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -157,31 +195,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Médial: 8.8 km/L"
+            android:text="Média: 8.8 km/L"
             android:textColor="#FFFFFF"
-            android:textSize="60sp"
+            android:textSize="68sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="819dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:progress="70"
-            android:progressDrawable="@drawable/progress_fade_layer"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/textConsumo"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ProgressBar
-            android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="819dp"
             android:layout_height="wrap_content"
@@ -190,8 +212,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,6 +70,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return count;
     }
 
+    public void delete(String tableName) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        db.delete(tableName, null, null);
+    }
+
 
 
     public void inserirDadosUsuario(String nome, String nacionalidade, String dtNascimento,
@@ -136,8 +142,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public void inserirDadosConsumo(int idUsuario, int idVeiculo,  String dataCalculo,
-                                    double valorFinal, String tipo) {
+    public void inserirDadosConsumo(int idUsuario, int idVeiculo,  String dataCalculo, double valorFinal,
+                                    String tipoCombustivel, String tipo, int progressBar) {
 
 
         SQLiteDatabase db = getWritableDatabase();
@@ -147,7 +153,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
         values.put("idVeiculo", idVeiculo);
         values.put("dataCalculo", dataCalculo);
         values.put("valorFinal", valorFinal);
+        values.put("tipoCombustivel", tipoCombustivel);
         values.put("tipo", tipo);
+        values.put("progressBar", progressBar);
 
         // Insira os dados na tabela
         db.insert("CONSUMO", null, values);
@@ -155,7 +163,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    private void setUpDatabase(SQLiteDatabase db) {
+    public void setUpDatabase(SQLiteDatabase db) {
+
+//        excluirTabela("USUARIOS");
+//        excluirTabela("VEICULO");
+//        excluirTabela("ABASTECIMENTO");
+//        excluirTabela("CONSUMO");
+
+        db.execSQL(SQL_CREATE_TABLE_USUARIOS);
+        db.execSQL(SQL_CREATE_TABLE_VEICULO);
+        db.execSQL(SQL_CREATE_TABLE_ABASTECIMENTO);
+        db.execSQL(SQL_CREATE_TABLE_CONSUMO);
 
         if (countRowsInTable("USUARIOS") == 0) {
             inserirDadosUsuario("Gabriel", "Brasileiro", "1999901", "Masculino",
@@ -164,17 +182,23 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
 
         if (countRowsInTable("VEICULO") == 0) {
-            inserirDadosVeiculo("Mitsubishi", "Lancer", "2015/2015", "Gasolina",
+            inserirDadosVeiculo("Mitsubishi", "Lancer", "2015/2015", "G",
                     55, 100000, "LRU9B16");
 
         }
 
         if (countRowsInTable("ABASTECIMENTO") == 0) {
-            inserirDadosAbastecimento(1, 1, 20231015, 100000, 250.6, 40, 1, "Gasolina", 0);
-            inserirDadosAbastecimento(1, 1, 20231101, 100100, 110.8, 18, 1, "Gasolina", 0);
+            inserirDadosAbastecimento(1, 1, 20231015, 100000, 250.6, 40, 1, "G", 0);
+            inserirDadosAbastecimento(1, 1, 20231101, 100100, 110.8, 18, 1, "G", 0);
 
         }
 
+    }
+
+    public void excluirTabela(String tabela) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + tabela);
+        db.close();
     }
 
     private static final String SQL_CREATE_TABLE_USUARIOS =
@@ -202,6 +226,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
             "CREATE TABLE IF NOT EXISTS CONSUMO (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "idUsuario INTEGER, idVeiculo INTEGER, dataCalculo TEXT, " +
-                    "valorFinal REAL, tipo TEXT)";
+                    "valorFinal REAL, tipoCombustivel TEXT, tipo TEXT, progressBar INTEGER)";
 
 }
