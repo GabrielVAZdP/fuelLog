@@ -15,6 +15,8 @@ import com.example.fuellog.Classes.Modelos.Consumo;
 import com.example.fuellog.R;
 import com.example.fuellog.databinding.FragmentConsumoAtualBinding;
 
+import java.sql.Date;
+
 public class ConsumoAtual extends Fragment {
 
     private FragmentConsumoAtualBinding binding;
@@ -40,9 +42,13 @@ public class ConsumoAtual extends Fragment {
 
         TextView textoConsumo = view.findViewById(R.id.textConsumo);
         TextView textoCombustivel = view.findViewById(R.id.tipoCombustivelResutado);
+        TextView textoDataCalculoResultado = view.findViewById(R.id.dataCalculoResultado);
+        TextView textoTipoCalculoResultado = view.findViewById(R.id.tipoCalculoResultado);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
         textoConsumo.setText("Consumo Atual: " + consumo.getConsumoFinal() + " Km/L");
+        textoDataCalculoResultado.setText(Date.valueOf(consumo.getData()).toString());
+        textoTipoCalculoResultado.setText(consumo.getTipo());
         progressBar.setProgress(consumo.getProgressBar());
 
         if (consumo.getTipoCombustivel().equals("G")) {

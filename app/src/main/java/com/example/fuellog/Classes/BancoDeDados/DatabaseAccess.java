@@ -182,7 +182,7 @@ public class DatabaseAccess {
         Date date = calendar.getTime();
 
         // Definir o formato desejado para a data (ano, mês, dia)
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         // Formatar a data como uma string
         return dateFormat.format(date);
