@@ -47,7 +47,7 @@ public class ConsumoAtual extends Fragment {
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
         textoConsumo.setText("Consumo Atual: " + consumo.getConsumoFinal() + " Km/L");
-        textoDataCalculoResultado.setText(Date.valueOf(consumo.getData()).toString());
+        textoDataCalculoResultado.setText(consumo.getData());
         textoTipoCalculoResultado.setText(consumo.getTipo());
         progressBar.setProgress(consumo.getProgressBar());
 

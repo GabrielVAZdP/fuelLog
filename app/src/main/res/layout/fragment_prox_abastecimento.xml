@@ -86,7 +86,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="60dp"
             android:text="Dados utilizados para cálculo de previsão"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
