@@ -21,7 +21,6 @@ public class ConsumoAtual extends Fragment {
 
     private FragmentConsumoAtualBinding binding;
     Consumo consumo;
-    double consumoFinal;
 
     @Override
     public View onCreateView(

@@ -6,8 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fuellog.Classes.Modelos.Abastecimento;
 import com.example.fuellog.Classes.Modelos.Consumo;
+import com.example.fuellog.Classes.Modelos.Previsao;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -172,6 +176,43 @@ public class DatabaseAccess {
 
     }
 
+    public Previsao getPrevisaoAbastecimento() {
+
+        Previsao previsao = new Previsao();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate dataInicial;
+
+        String[] colunas = {"data", "kmAtual"};
+        ArrayList<Integer> mediaKm = new ArrayList();
+        ArrayList<String> mediaDia = new ArrayList();
+
+
+            Cursor cursor = dbManager.selectFromTable("ABASTECIMENTO", colunas , null, null, "data ASC", null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    mediaKm.add(cursor.getInt(cursor.getColumnIndex("kmAtual")));
+                    mediaDia.add(cursor.getString(cursor.getColumnIndex("data")));
+
+                } while (cursor.moveToNext());
+            }
+
+            cursor.close();
+
+
+            previsao.setMediaKm((mediaKm.get(mediaKm.size()-1) - mediaKm.get(0))/(mediaKm.size()-1));
+            previsao.setMediaDia(LocalDate.parse(mediaDia.get(0), formatter).until(LocalDate.parse(mediaDia.get(mediaDia.size()-1), formatter)).getDays());
+            previsao.setDataCalculo(getDataAtual());
+            previsao.setDataPrevista(LocalDate.parse(mediaDia.get(mediaDia.size()-1), formatter).until(LocalDate.parse(getDataAtualPrevisao(), formatter)).getDays());
+            previsao.setKmPrevisto(mediaKm.get(mediaKm.size()-1) + previsao.getMediaKm());
+
+            if (previsao.getDataPrevista() < 0)
+                previsao.setDataPrevista(0);
+
+            return previsao;
+
+    }
+
     public void setUpDatabase() {
         dbManager.setUpDatabase(db);
     }
@@ -183,6 +224,19 @@ public class DatabaseAccess {
 
         // Definir o formato desejado para a data (ano, mês, dia)
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Formatar a data como uma string
+        return dateFormat.format(date);
+
+    }
+
+    private String getDataAtualPrevisao() {
+        // Obter a data atual
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        // Definir o formato desejado para a data (ano, mês, dia)
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
         // Formatar a data como uma string
         return dateFormat.format(date);
