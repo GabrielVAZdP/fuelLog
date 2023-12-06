@@ -145,7 +145,7 @@ public class DatabaseAccess {
                 Consumo consumo = new Consumo();
                 consumo.setIdUsuario(cursor.getInt(cursor.getColumnIndex("idUsuario")));
                 consumo.setIdVeiculo(cursor.getInt(cursor.getColumnIndex("idVeiculo")));
-                consumo.setData(cursor.getString(cursor.getColumnIndex("dataCalculo")));
+                consumo.setData(formatarData(cursor.getString(cursor.getColumnIndex("dataCalculo"))));
                 consumo.setTipoCombustivel(cursor.getString(cursor.getColumnIndex("tipoCombustivel")));
                 consumo.setTipo(cursor.getString(cursor.getColumnIndex("tipo")));
                 consumo.setConsumoFinal(cursor.getDouble(cursor.getColumnIndex("valorFinal")));
@@ -215,6 +215,22 @@ public class DatabaseAccess {
         // Formatar a data como uma string
         return dateFormat.format(date);
 
+    }
+
+    private String formatarData(String data) {
+        // Formato original da string
+        DateTimeFormatter formatoOriginal = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        // Formato desejado
+        DateTimeFormatter formatoDesejado = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        // Parse da string para um objeto LocalDate
+        LocalDate dataF = LocalDate.parse(data, formatoOriginal);
+
+        // Formatar a data no novo formato
+        String dataFormatada = dataF.format(formatoDesejado);
+
+        return dataFormatada;
     }
 
     private String getDataAtualPrevisao() {

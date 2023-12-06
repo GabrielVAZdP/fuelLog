@@ -193,6 +193,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
         }
 
+        if (countRowsInTable("CONSUMO") == 0) {
+            inserirDadosConsumo(1, 1, "20231015", 8.8, "G", "EXATO", 70);
+            inserirDadosConsumo(1, 1, "20231015", 7, "G", "APROXIMADO", 55);
+
+        }
+
     }
 
     public void excluirTabela(String tabela) {

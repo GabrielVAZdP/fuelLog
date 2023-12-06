@@ -39,7 +39,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.View
 
         // Definir os valores nos TextViews
         holder.dataCalculo.setText(consumoAtual.getData());
-        holder.mediaCalculo.setText(String.valueOf(consumoAtual.getConsumoFinal()));
+        holder.mediaCalculo.setText(String.valueOf(consumoAtual.getConsumoFinal()) + " Km/L");
         holder.tipoCalculoHist.setText(consumoAtual.getTipo());
     }
 
