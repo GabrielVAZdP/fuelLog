@@ -120,14 +120,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Média de Dias entre Abastecimentos:"
+            android:text="Média de Km rodados entre Abasciemtnos:"
             android:textColor="#FFFFFF"
             android:textSize="27sp"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <TextView
-            android:id="@+id/mediaDia"
+            android:id="@+id/mediaKm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -142,14 +142,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Média de Km rodados entre Abasciemtnos:"
+            android:text="Média de Dias entre Abastecimentos:"
             android:textColor="#FFFFFF"
             android:textSize="27sp"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
-            android:id="@+id/mediaKm"
+            android:id="@+id/mediaDia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

@@ -16,11 +16,13 @@ import com.example.fuellog.R;
 import com.example.fuellog.databinding.FragmentConsumoAtualBinding;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class ConsumoAtual extends Fragment {
 
     private FragmentConsumoAtualBinding binding;
     Consumo consumo;
+    ArrayList<Consumo> arrayList;
 
     @Override
     public View onCreateView(
@@ -29,7 +31,7 @@ public class ConsumoAtual extends Fragment {
     ) {
 
         consumo = new Consumo(getContext());
-        consumo = consumo.getUltimoConsumo();
+        arrayList = consumo.getListConsumo(1);
 
         binding = FragmentConsumoAtualBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -45,12 +47,12 @@ public class ConsumoAtual extends Fragment {
         TextView textoTipoCalculoResultado = view.findViewById(R.id.tipoCalculoResultado);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
-        textoConsumo.setText("Consumo Atual: " + consumo.getConsumoFinal() + " Km/L");
-        textoDataCalculoResultado.setText(consumo.getData());
-        textoTipoCalculoResultado.setText(consumo.getTipo());
-        progressBar.setProgress(consumo.getProgressBar());
+        textoConsumo.setText("Consumo Atual: " + arrayList.get(0).getConsumoFinal() + " Km/L");
+        textoDataCalculoResultado.setText(arrayList.get(0).getData());
+        textoTipoCalculoResultado.setText(arrayList.get(0).getTipo());
+        progressBar.setProgress(arrayList.get(0).getProgressBar());
 
-        if (consumo.getTipoCombustivel().equals("G")) {
+        if (arrayList.get(0).getTipoCombustivel().equals("G")) {
             textoCombustivel.setText("Gasolina");
         }
 

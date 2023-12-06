@@ -153,26 +153,32 @@ public class DatabaseAccess {
 
     }
 
-    public Consumo getUltimoConsumo() {
+    public ArrayList<Consumo> getListConsumo(Integer limit) {
 
-        Consumo consumo = new Consumo();
+        ArrayList<Consumo> arrayList= new ArrayList<Consumo>();
 
-        Cursor cursor = dbManager.selectAllFromTable("CONSUMO", null, null, "dataCalculo DESC", 1);
+        Cursor cursor = dbManager.selectAllFromTable("CONSUMO", null, null, "dataCalculo DESC", limit);
 
         if (cursor != null && cursor.moveToFirst()) {
-            consumo.setIdUsuario(cursor.getInt(cursor.getColumnIndex("idUsuario")));
-            consumo.setIdVeiculo(cursor.getInt(cursor.getColumnIndex("idVeiculo")));
-            consumo.setData(cursor.getString(cursor.getColumnIndex("dataCalculo")));
-            consumo.setTipoCombustivel(cursor.getString(cursor.getColumnIndex("tipoCombustivel")));
-            consumo.setTipo(cursor.getString(cursor.getColumnIndex("tipo")));
-            consumo.setConsumoFinal(cursor.getDouble(cursor.getColumnIndex("valorFinal")));
-            consumo.setProgressBar(cursor.getInt(cursor.getColumnIndex("progressBar")));
+            do {
+                Consumo consumo = new Consumo();
+                consumo.setIdUsuario(cursor.getInt(cursor.getColumnIndex("idUsuario")));
+                consumo.setIdVeiculo(cursor.getInt(cursor.getColumnIndex("idVeiculo")));
+                consumo.setData(cursor.getString(cursor.getColumnIndex("dataCalculo")));
+                consumo.setTipoCombustivel(cursor.getString(cursor.getColumnIndex("tipoCombustivel")));
+                consumo.setTipo(cursor.getString(cursor.getColumnIndex("tipo")));
+                consumo.setConsumoFinal(cursor.getDouble(cursor.getColumnIndex("valorFinal")));
+                consumo.setProgressBar(cursor.getInt(cursor.getColumnIndex("progressBar")));
 
+                arrayList.add(consumo);
+
+            }
+            while (cursor.moveToNext()) ;
         }
 
         cursor.close();
 
-        return consumo;
+        return arrayList;
 
     }
 

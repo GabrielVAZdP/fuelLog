@@ -12,14 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fuellog.Classes.Adapters.AdapterHistorico;
+import com.example.fuellog.Classes.Modelos.Consumo;
 import com.example.fuellog.R;
 import com.example.fuellog.databinding.FragmentAbastecimentoBinding;
+
+import java.util.ArrayList;
 
 public class Historico extends Fragment {
 
     private RecyclerView recyclerView;
     private AdapterHistorico adapter;
-    private FragmentAbastecimentoBinding binding;
+    private Consumo consumo;
+    private ArrayList<Consumo> arrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,11 +32,15 @@ public class Historico extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter = new AdapterHistorico();
+        // Inicializar o adapter passando o contexto
+        adapter = new AdapterHistorico(getContext());
         recyclerView.setAdapter(adapter);
 
-        // Adicione os dados à lista (por exemplo, uma lista de registros)
-        // adapter.setData(dataList);
+        consumo = new Consumo(getContext());
+        arrayList = consumo.getListConsumo(null);
+
+        // Atualizar os dados do adapter com a lista de consumo
+        adapter.setData(arrayList);
 
         return view;
     }
@@ -40,7 +48,6 @@ public class Historico extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 
 }

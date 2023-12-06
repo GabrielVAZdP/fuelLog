@@ -42,12 +42,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor selectAllFromTable(String tableName, String selection, String[] selectionArgs, String orderBy, int limit) {
+    public Cursor selectAllFromTable(String tableName, String selection, String[] selectionArgs, String orderBy, Integer limit) {
 
         SQLiteDatabase db = getReadableDatabase();
 
         // Consulta com LIMIT
-        String limitClause = (limit > 0) ? String.valueOf(limit) : null;
+        String limitClause = (limit == null) ? null: String.valueOf(limit);
 
         // Consulta sem especificar as colunas
         Cursor cursor = db.query(tableName, null, selection, selectionArgs, null, null, orderBy, limitClause);

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.fuellog.Classes.BancoDeDados.DatabaseAccess;
 import com.example.fuellog.Classes.BancoDeDados.DatabaseManager;
 
+import java.util.ArrayList;
+
 public class Consumo {
 
     private int id;
@@ -107,8 +109,8 @@ public class Consumo {
         return databaseAccess.calcularConsumo();
     }
 
-    public Consumo getUltimoConsumo() {
-        return databaseAccess.getUltimoConsumo();
+    public ArrayList<Consumo> getListConsumo(Integer limit) {
+        return databaseAccess.getListConsumo(limit);
     }
 
 }
