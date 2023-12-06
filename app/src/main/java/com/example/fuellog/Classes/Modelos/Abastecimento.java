@@ -1,5 +1,9 @@
 package com.example.fuellog.Classes.Modelos;
 
+import android.content.Context;
+
+import com.example.fuellog.Classes.BancoDeDados.DatabaseAccess;
+
 public class Abastecimento {
 
     private int id;
@@ -8,15 +12,23 @@ public class Abastecimento {
     private String data;
     private int kmAtual;
     private double valor;
-    private double quantidadeLitros;
-    private boolean tanqueCheio;
+    private int quantidadeLitros;
+    private int tanqueCheio;
     private String tipoCombustivel;
     private int percentualTanque;
 
+    DatabaseAccess databaseAccess;
+
     public Abastecimento() {
+
     }
 
-    public Abastecimento(int idUsuario, int idVeiculo, String data, int kmAtual, double valor, double quantidadeLitros, boolean tanqueCheio, String tipoCombustivel) {
+    public Abastecimento(Context context) {
+        databaseAccess = new DatabaseAccess(context);
+
+    }
+
+    public Abastecimento(int idUsuario, int idVeiculo, String data, int kmAtual, double valor, int quantidadeLitros, int tanqueCheio, String tipoCombustivel) {
         this.idUsuario = idUsuario;
         this.idVeiculo = idVeiculo;
         this.data = data;
@@ -27,7 +39,7 @@ public class Abastecimento {
         this.tipoCombustivel = tipoCombustivel;
     }
 
-    public Abastecimento(int idUsuario, int idVeiculo, String data, int kmAtual, double valor, boolean tanqueCheio, String tipoCombustivel, int percentualTanque) {
+    public Abastecimento(int idUsuario, int idVeiculo, String data, int kmAtual, double valor, int tanqueCheio, String tipoCombustivel, int percentualTanque) {
         this.idUsuario = idUsuario;
         this.idVeiculo = idVeiculo;
         this.data = data;
@@ -86,19 +98,19 @@ public class Abastecimento {
         this.valor = valor;
     }
 
-    public double getQuantidadeLitros() {
+    public int getQuantidadeLitros() {
         return quantidadeLitros;
     }
 
-    public void setQuantidadeLitros(double quantidadeLitros) {
+    public void setQuantidadeLitros(int quantidadeLitros) {
         this.quantidadeLitros = quantidadeLitros;
     }
 
-    public boolean isTanqueCheio() {
+    public int getTanqueCheio() {
         return tanqueCheio;
     }
 
-    public void setTanqueCheio(boolean tanqueCheio) {
+    public void setTanqueCheio(int tanqueCheio) {
         this.tanqueCheio = tanqueCheio;
     }
 
@@ -117,4 +129,17 @@ public class Abastecimento {
     public void setPercentualTanque(int percentualTanque) {
         this.percentualTanque = percentualTanque;
     }
+
+    public void registrarAbastecimento(Abastecimento abastecimento) {
+        databaseAccess.registrarAbastecimento(abastecimento);
+    }
+
+    public int kmAnteriorAbastecimento() {
+        return databaseAccess.kmAnteriorAbastecimento();
+    }
+
+    public int tamTanque() {
+        return databaseAccess.tamTanque();
+    }
+
 }

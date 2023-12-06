@@ -20,7 +20,7 @@
 
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/editTextKm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/editTextValor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -53,10 +53,10 @@
             android:inputType="number"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextKm" />
 
         <EditText
-            android:id="@+id/editTextTime3"
+            android:id="@+id/editTextLitros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -65,7 +65,7 @@
             android:inputType="number"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextValor" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -103,8 +103,8 @@
             android:text="Km do Veículo"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-            app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+            app:layout_constraintStart_toEndOf="@+id/editTextKm"
+            app:layout_constraintTop_toTopOf="@+id/editTextKm" />
 
         <TextView
             android:id="@+id/textView3"
@@ -114,8 +114,8 @@
             android:text="Valor"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@+id/editTextTime"
-            app:layout_constraintTop_toTopOf="@+id/editTextTime" />
+            app:layout_constraintStart_toEndOf="@+id/editTextValor"
+            app:layout_constraintTop_toTopOf="@+id/editTextValor" />
 
         <TextView
             android:id="@+id/textView4"
@@ -125,11 +125,23 @@
             android:text="Litros Abastecidos"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@+id/editTextTime3"
-            app:layout_constraintTop_toTopOf="@+id/editTextTime3" />
+            app:layout_constraintStart_toEndOf="@+id/editTextLitros"
+            app:layout_constraintTop_toTopOf="@+id/editTextLitros" />
+
+        <TextView
+            android:id="@+id/textPorcentagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Porcentagem do tanque após abastecimento"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBoxTanqueCheio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/white"
@@ -140,17 +152,17 @@
             app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/switchCombustivel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gasolina"
+            android:text="Etanol"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:thumbTint="@color/white"
             android:trackTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextKm"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+            app:layout_constraintTop_toTopOf="@+id/editTextKm" />
 
         <Button
             android:id="@+id/button"
@@ -159,21 +171,40 @@
             android:layout_marginBottom="30dp"
             android:text="Calcular"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/consumoCalculado"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/consumoCalculado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Consumo Atual: 8.8 km/L"
+            android:text="Consumo Atual: -"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="150dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextLitros">
+
+            <Spinner
+                android:id="@+id/spinnerOpcoes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:entries="@array/opcoes_array"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteY="30dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

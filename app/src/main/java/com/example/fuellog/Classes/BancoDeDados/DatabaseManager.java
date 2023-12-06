@@ -119,7 +119,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
-    public void inserirDadosAbastecimento(int idUsuario, int idVeiculo, int data, int kmAtual, double valor,
+    public void inserirDadosAbastecimento(int idUsuario, int idVeiculo, String data, int kmAtual, double valor,
                                           int litros, int tanqueCheio, String tipoCombustivel, int porcentagem) {
 
 
@@ -188,8 +188,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
 
         if (countRowsInTable("ABASTECIMENTO") == 0) {
-            inserirDadosAbastecimento(1, 1, 20231015, 100000, 250.6, 40, 1, "G", 0);
-            inserirDadosAbastecimento(1, 1, 20231101, 100100, 110.8, 18, 1, "G", 0);
+            inserirDadosAbastecimento(1, 1, "20231015", 100000, 250.6, 40, 1, "G", 0);
+            inserirDadosAbastecimento(1, 1, "20231101", 100100, 110.8, 18, 1, "G", 0);
 
         }
 
@@ -218,7 +218,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_ABASTECIMENTO =
             "CREATE TABLE IF NOT EXISTS ABASTECIMENTO (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "idUsuario INTEGER, idVeiculo INTEGER, data INTEGER, " +
+                    "idUsuario INTEGER, idVeiculo INTEGER, data TEXT, " +
                     "kmAtual INTEGER, valor REAL, litros INTEGER," +
                     "tanqueCheio INTEGER, tipoCombustivel TEXT, porcentagem INTEGER)";
 

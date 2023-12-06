@@ -47,16 +47,17 @@ public class ConsumoAtual extends Fragment {
         TextView textoTipoCalculoResultado = view.findViewById(R.id.tipoCalculoResultado);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
-        textoConsumo.setText("Consumo Atual: " + arrayList.get(0).getConsumoFinal() + " Km/L");
-        textoDataCalculoResultado.setText(arrayList.get(0).getData());
-        textoTipoCalculoResultado.setText(arrayList.get(0).getTipo());
-        progressBar.setProgress(arrayList.get(0).getProgressBar());
+        if (!arrayList.isEmpty()) {
+            textoConsumo.setText("Consumo Atual: " + arrayList.get(0).getConsumoFinal() + " Km/L");
+            textoDataCalculoResultado.setText(arrayList.get(0).getData());
+            textoTipoCalculoResultado.setText(arrayList.get(0).getTipo());
+            progressBar.setProgress(arrayList.get(0).getProgressBar());
 
-        if (arrayList.get(0).getTipoCombustivel().equals("G")) {
-            textoCombustivel.setText("Gasolina");
+            if (arrayList.get(0).getTipoCombustivel().equals("G")) {
+                textoCombustivel.setText("Gasolina");
+            }
+
         }
-
-
 
     }
 

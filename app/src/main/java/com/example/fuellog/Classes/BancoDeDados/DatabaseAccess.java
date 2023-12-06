@@ -31,22 +31,12 @@ public class DatabaseAccess {
         Abastecimento atual = new Abastecimento();
         Abastecimento anterior = new Abastecimento();
 
-        int tamTanque = 0;
         int progressBar = 0;
-        String[] colunas = {"tamTanque"};
         String consumoFormatado = "";
         String tipo = "APROXIMADO";
         double consumoCalculado = 0;
 
-
-        Cursor cursor = dbManager.selectFromTable("VEICULO", colunas , null, null, null, null);
-
-        if (cursor != null && cursor.moveToFirst()) {
-            tamTanque = cursor.getInt(cursor.getColumnIndex("tamTanque"));
-
-        }
-
-        cursor = dbManager.selectAllFromTable("ABASTECIMENTO", null, null, "data DESC", 2);
+        Cursor cursor = dbManager.selectAllFromTable("ABASTECIMENTO", null, null, "CAST(data AS INTEGER) DESC", 2);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -55,31 +45,22 @@ public class DatabaseAccess {
                     atual.setIdUsuario(cursor.getInt(cursor.getColumnIndex("idUsuario")));
                     atual.setIdVeiculo(cursor.getInt(cursor.getColumnIndex("idVeiculo")));
                     atual.setKmAtual(cursor.getInt(cursor.getColumnIndex("kmAtual")));
-                    atual.setQuantidadeLitros(cursor.getDouble(cursor.getColumnIndex("litros")));
+                    atual.setQuantidadeLitros(cursor.getInt(cursor.getColumnIndex("litros")));
                     atual.setPercentualTanque(cursor.getInt(cursor.getColumnIndex("porcentagem")));
                     atual.setValor(cursor.getDouble(cursor.getColumnIndex("valor")));
                     atual.setTipoCombustivel(cursor.getString(cursor.getColumnIndex("tipoCombustivel")));
-
-                    if(cursor.getInt(cursor.getColumnIndex("tanqueCheio")) == 1)
-                        atual.setTanqueCheio(true);
-                    else
-                        atual.setTanqueCheio(false);
+                    atual.setTanqueCheio(cursor.getInt(cursor.getColumnIndex("tanqueCheio")));
 
 
                 } else if (cursor.getColumnIndex("kmAtual") != -1) {
                     anterior.setIdUsuario(cursor.getInt(cursor.getColumnIndex("idUsuario")));
                     anterior.setIdVeiculo(cursor.getInt(cursor.getColumnIndex("idVeiculo")));
                     anterior.setKmAtual(cursor.getInt(cursor.getColumnIndex("kmAtual")));
-                    anterior.setQuantidadeLitros(cursor.getDouble(cursor.getColumnIndex("litros")));
+                    anterior.setQuantidadeLitros(cursor.getInt(cursor.getColumnIndex("litros")));
                     anterior.setPercentualTanque(cursor.getInt(cursor.getColumnIndex("porcentagem")));
                     anterior.setValor(cursor.getDouble(cursor.getColumnIndex("valor")));
                     anterior.setTipoCombustivel(cursor.getString(cursor.getColumnIndex("tipoCombustivel")));
-
-                    if(cursor.getInt(cursor.getColumnIndex("tanqueCheio")) == 1)
-                        anterior.setTanqueCheio(true);
-                    else
-                        anterior.setTanqueCheio(false);
-
+                    anterior.setTanqueCheio(cursor.getInt(cursor.getColumnIndex("tanqueCheio")));
 
                 }
 
@@ -88,18 +69,18 @@ public class DatabaseAccess {
             cursor.close();
 
 
-            if (anterior.isTanqueCheio() && atual.isTanqueCheio()) {
+            if (anterior.getTanqueCheio() == 1 && atual.getTanqueCheio() == 1) {
                 consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual()) / atual.getQuantidadeLitros());
                 tipo = "EXATO";
 
-            } else if (!anterior.isTanqueCheio() && !atual.isTanqueCheio()) {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ ((tamTanque*atual.getPercentualTanque()/100) - (tamTanque*anterior.getPercentualTanque()/100)));
+            } else if (anterior.getTanqueCheio() != 1 && atual.getTanqueCheio() != 1) {
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ ((tamTanque()*atual.getPercentualTanque()/100) - (tamTanque()*anterior.getPercentualTanque()/100)));
 
-            } else if (anterior.isTanqueCheio() && !atual.isTanqueCheio()) {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (tamTanque - (tamTanque*atual.getPercentualTanque()/100)));
+            } else if (anterior.getTanqueCheio() == 1 && atual.getTanqueCheio() != 1) {
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (tamTanque() - (tamTanque()*atual.getPercentualTanque()/100)));
 
             } else {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (atual.getQuantidadeLitros() - (tamTanque*anterior.getPercentualTanque()/100)));
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (atual.getQuantidadeLitros() - (tamTanque()*anterior.getPercentualTanque()/100)));
 
             }
 
@@ -250,7 +231,39 @@ public class DatabaseAccess {
     }
 
     private void salvarConsumo(Consumo consumo) {
-        dbManager.inserirDadosConsumo(consumo.getIdUsuario(), consumo.getIdVeiculo(), consumo.getData(), consumo.getConsumoFinal(), consumo.getTipoCombustivel(), consumo.getTipo(), consumo.getProgressBar());
+        dbManager.inserirDadosConsumo(consumo.getIdUsuario(), consumo.getIdVeiculo(), consumo.getData(),
+                consumo.getConsumoFinal(), consumo.getTipoCombustivel(), consumo.getTipo(), consumo.getProgressBar());
+
+    }
+
+    public void registrarAbastecimento(Abastecimento abastecimento) {
+        dbManager.inserirDadosAbastecimento(abastecimento.getIdUsuario(), abastecimento.getIdVeiculo(), getDataAtualPrevisao(), abastecimento.getKmAtual(),
+                abastecimento.getValor(), abastecimento.getQuantidadeLitros(), abastecimento.getTanqueCheio(), abastecimento.getTipoCombustivel(), abastecimento.getPercentualTanque());
+    }
+
+    public int kmAnteriorAbastecimento() {
+        Cursor cursor = dbManager.selectAllFromTable("ABASTECIMENTO", null, null, "data DESC", 1);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex("kmAtual"));
+        }
+
+        return Integer.MAX_VALUE;
+
+    }
+
+    public int tamTanque() {
+
+        String[] colunas = {"tamTanque"};
+        Cursor cursor = dbManager.selectFromTable("VEICULO", colunas , null, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            return cursor.getInt(cursor.getColumnIndex("tamTanque"));
+
+        }
+        else {
+            return 0;
+        }
 
     }
 
