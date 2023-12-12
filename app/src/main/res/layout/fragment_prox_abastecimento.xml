@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Média de Km rodados entre Abasciemtnos:"
+            android:text="Média de Km rodados entre Abastecimentos:"
             android:textColor="#FFFFFF"
             android:textSize="27sp"
             app:layout_constraintStart_toStartOf="@+id/guideline2"

@@ -87,7 +87,7 @@ public class DatabaseAccess {
             consumoFormatado = String.format("%.1f", consumoCalculado);
             progressBar = calcularProgressBar(atual.getTipoCombustivel(), consumoCalculado);
 
-            Consumo consumo = new Consumo(atual.getIdUsuario(), atual.getIdVeiculo(), getDataAtual(), atual.getTipoCombustivel(), tipo, Double.parseDouble(consumoFormatado), progressBar);
+            Consumo consumo = new Consumo(atual.getIdUsuario(), atual.getIdVeiculo(), getDataAtualString(), atual.getTipoCombustivel(), tipo, Double.parseDouble(consumoFormatado), progressBar);
             salvarConsumo(consumo);
 
             return consumo.getConsumoFinal();
@@ -138,7 +138,7 @@ public class DatabaseAccess {
 
         ArrayList<Consumo> arrayList= new ArrayList<Consumo>();
 
-        Cursor cursor = dbManager.selectAllFromTable("CONSUMO", null, null, "dataCalculo DESC", limit);
+        Cursor cursor = dbManager.selectAllFromTable("CONSUMO", null, null, "id DESC", limit);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -211,6 +211,19 @@ public class DatabaseAccess {
 
         // Definir o formato desejado para a data (ano, mês, dia)
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Formatar a data como uma string
+        return dateFormat.format(date);
+
+    }
+
+    private String getDataAtualString() {
+        // Obter a data atual
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
+        // Definir o formato desejado para a data (ano, mês, dia)
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
         // Formatar a data como uma string
         return dateFormat.format(date);
