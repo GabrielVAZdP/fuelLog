@@ -75,13 +75,13 @@ public class DatabaseAccess {
                 tipo = "EXATO";
 
             } else if (anterior.getTanqueCheio() != 1 && atual.getTanqueCheio() != 1) {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ ((tamTanque()*atual.getPercentualTanque()/100) - (tamTanque()*anterior.getPercentualTanque()/100)));
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ ((tamTanque()*anterior.getPercentualTanque()/100) - ((tamTanque()*atual.getPercentualTanque()/100) - (atual.getQuantidadeLitros()))));
 
             } else if (anterior.getTanqueCheio() == 1 && atual.getTanqueCheio() != 1) {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (tamTanque() - (tamTanque()*atual.getPercentualTanque()/100)));
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (tamTanque() - ((tamTanque()*atual.getPercentualTanque()/100) - (atual.getQuantidadeLitros()))));
 
             } else {
-                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ (atual.getQuantidadeLitros() - (tamTanque()*anterior.getPercentualTanque()/100)));
+                consumoCalculado = ((atual.getKmAtual() - anterior.getKmAtual())/ ((tamTanque()*anterior.getPercentualTanque()/100) - (tamTanque() - atual.getQuantidadeLitros())));
 
             }
 
