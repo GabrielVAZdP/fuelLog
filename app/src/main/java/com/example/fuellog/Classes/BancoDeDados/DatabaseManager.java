@@ -21,7 +21,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_TABLE_VEICULO);
         db.execSQL(SQL_CREATE_TABLE_ABASTECIMENTO);
         db.execSQL(SQL_CREATE_TABLE_CONSUMO);
-        setUpDatabase(db);
 
     }
 
@@ -170,10 +169,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
 //        excluirTabela("ABASTECIMENTO");
 //        excluirTabela("CONSUMO");
 
-        db.execSQL(SQL_CREATE_TABLE_USUARIOS);
-        db.execSQL(SQL_CREATE_TABLE_VEICULO);
-        db.execSQL(SQL_CREATE_TABLE_ABASTECIMENTO);
-        db.execSQL(SQL_CREATE_TABLE_CONSUMO);
 
         if (countRowsInTable("USUARIOS") == 0) {
             inserirDadosUsuario("Gabriel", "Brasileiro", "1999901", "Masculino",
