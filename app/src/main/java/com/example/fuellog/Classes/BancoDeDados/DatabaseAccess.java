@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DatabaseAccess {
 
@@ -36,7 +37,7 @@ public class DatabaseAccess {
         String tipo = "APROXIMADO";
         double consumoCalculado = 0;
 
-        Cursor cursor = dbManager.selectAllFromTable("ABASTECIMENTO", null, null, "CAST(data AS INTEGER) DESC", 2);
+        Cursor cursor = dbManager.selectAllFromTable("ABASTECIMENTO", null, null, "id DESC", 2);
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -84,7 +85,13 @@ public class DatabaseAccess {
 
             }
 
-            consumoFormatado = String.format("%.1f", consumoCalculado);
+            if (consumoCalculado < 0) {
+                consumoCalculado = consumoCalculado * -1;
+            } else if (consumoCalculado == 0) {
+                consumoCalculado = 1;
+            }
+
+            consumoFormatado = String.format(Locale.US, "%.1f", consumoCalculado);
             progressBar = calcularProgressBar(atual.getTipoCombustivel(), consumoCalculado);
 
             Consumo consumo = new Consumo(atual.getIdUsuario(), atual.getIdVeiculo(), getDataAtualString(), atual.getTipoCombustivel(), tipo, Double.parseDouble(consumoFormatado), progressBar);
